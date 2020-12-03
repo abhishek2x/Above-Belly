@@ -1,0 +1,97 @@
+<!-- =========================================
+                         SIDE SLIDE
+        ========================================= -->
+<header class="forbg">
+    {% if user.is_authenticated %}
+    <div id="content">
+        <nav class="navbars navbar-expand-lg">
+            <button type="button" id="sidebarCollapse" class="btn">
+                <i class="fas fa-align-left"></i>
+            </button>
+        </nav>
+    </div>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3>Options:</h3>
+            </div>
+
+            <ul class="list-unstyled components">
+                <div class="container mb-4">
+                    <a href="{% url 'profileDetail' request.user.id %}">
+                        <img src="/images/{{ request.user.myprofile.pic }}" alt="Not Provided" width="30px" height="30px">
+                        <b class="text-break">Hello, {{user.username}}!</b>
+                    </a>
+                </div>
+                <hr>
+                <li class="nav-item active">
+                    <button type="button" class="btn chk">
+                        <a href="{% url 'home' %}">
+                            <i class="fa fa-home mr-3"></i>Home
+                        </a>
+                    </button>
+                </li>
+
+                <li class="nav-item active">
+                    <button type="button" class="btn chk">
+                        <a href="{% url 'postList' %}">
+                            <i class="fa fa-search mr-3"></i>Explore
+                        </a>
+                    </button>
+                </li>
+
+                <li class="nav-item active">
+                    <button type="button" class="btn chk">
+                        <a href="{% url 'profileList' %}">
+                            <i class="fas fa-search mr-3"></i>Search Members
+                        </a>
+                    </button>
+                </li>
+
+                <li class="nav-item active">
+                    <button type="button" class="btn chk">
+                        <a href="{% url 'chat_ajax' %}">
+                            <i class="fa fa-comments  mr-3"></i>Chat
+                        </a>
+                    </button>
+                </li>
+
+                <li class="nav-item active">
+                    <button type="button" class="btn chk">
+                        <a href="{% url 'poll_home' %}">
+                            <i class="fa fa-table mr-3" aria-hidden="true"></i>Poll
+                        </a>
+                    </button>
+                </li>
+
+                <li class="nav-item active">
+                    <button type="button" class="btn chk">
+                        <a href="{% url 'ub' %}">
+                            <i class="fa fa-poll-people mr-3"></i>Confessions
+                        </a>
+                    </button>
+                </li>
+
+                <li class="nav-item active">
+                    <button type="button" class="btn chk">
+                        <a href="{% url 'vithubList' %}">
+                            <i class="fa fa-code mr-3" aria-hidden="true"></i>CodeHub
+                        </a>
+                    </button>
+                </li>
+
+                {% if user.is_superuser %}
+                <hr>
+                    <li class="nav-item active">
+                        <button type="button" class="btn chk">
+                            <a href="/admin">
+                                <i class="fas fa-user-shield mr-3"></i>Admin
+                            </a>
+                        </button>
+                    </li>
+                {% endif %}
+
+            </ul>
+        </nav>
+
+        {% endif %}
